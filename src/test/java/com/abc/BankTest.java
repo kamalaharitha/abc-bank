@@ -50,5 +50,28 @@ public class BankTest {
 
         assertEquals(170.0, bank.totalInterestPaid(), DOUBLE_DELTA);
     }
+    
+    @Test
+    public void checkIfEligibleForMaxiSaving() {
+        Account ac = new Account();
+         public List<Transaction> transactions = new  ArrayList<Transaction>();
+         Transaction transaction1 =  new Transaction();
+         Transaction transaction2 =  new Transaction();
+         transaction1.setTransactionDate("date");
+         transaction2.setTransactionDate("date");
+         transactions.add(transaction2);
+        Bank bank = new Bank();
+        Account checkingAccount = new Account(Account.MAXI_SAVINGS);
+        bank.addCustomer(new Customer("Bill").openAccount(checkingAccount));
+        checkingAccount.deposit(3000.0);
+        assertEquals(170.0, bank.totalInterestPaid(), DOUBLE_DELTA);
+    }
+    
+     @Test
+    public void transferToAccount() {
+        Account ac = new Account();
+        ac.setAccountNumber("From Account number");
+        assertEquals(true, ac.accountNumbe("To Account number",800),DOUBLE_DELTA);
+    }
 
 }
