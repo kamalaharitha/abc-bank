@@ -69,5 +69,29 @@ public void withdraw(double amount) {
     public int getAccountType() {
         return accountType;
     }
+    
+    
+    private boolean checkIfEligibleForMaxiSaving() {
+        boolean isEligible = true;
+		Date pastDate = DateProvider.getInstance().addDays(-10) 
+        for (Transaction t: transactions) {
+			if(t.getTransactionDate.after(pastDate)) {
+			  isEligible = false;
+			  break;
+			}
+		}
+            amount += t.amount;
+        return isEligible;
+    }
+    public boolean transferToAccount(Account a, double amount) {
+		boolean isTransfered =  false;
+		if(this.getAccNumber() != a.getAccNumber()) {
+			this.withdraw(amount);
+			a.deposit(amount);
+			isTransfered = true;
+		}
+			return isTransfered;
+	}
+
 
 }
